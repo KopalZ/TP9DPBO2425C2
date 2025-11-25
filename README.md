@@ -45,10 +45,6 @@ Website ini digunakan untuk mencatat spesifikasi kendaraan balap dan statistik p
 
 ### 2️⃣ Tabel `kendaraan`
 
-
-https://github.com/user-attachments/assets/61296e71-ba6d-4365-90c4-c97869237184
-
-
 | Kolom | Tipe | Keterangan |
 | :--- | :--- | :--- |
 | `id` | INT (PK, AUTO_INCREMENT) | ID unik Kendaraan |
