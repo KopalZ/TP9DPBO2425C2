@@ -45,6 +45,10 @@ Website ini digunakan untuk mencatat spesifikasi kendaraan balap dan statistik p
 
 ### 2️⃣ Tabel `kendaraan`
 
+
+https://github.com/user-attachments/assets/61296e71-ba6d-4365-90c4-c97869237184
+
+
 | Kolom | Tipe | Keterangan |
 | :--- | :--- | :--- |
 | `id` | INT (PK, AUTO_INCREMENT) | ID unik Kendaraan |
@@ -74,8 +78,6 @@ Struktur folder dirancang untuk memisahkan *concern* sesuai pola MVP.
 
 ```bash
 TP9/
- ├── config/ (Opsional jika dipisah)
- │
  ├── models/                  # [MODEL] Mengurus Data & Database
  │   ├── DB.php               # Koneksi Database (PDO)
  │   ├── Pembalap.php         # Class Objek Pembalap
@@ -104,3 +106,47 @@ TP9/
  ├── index.php                # Main Entry Point (Routing)
  └── mvp_db.sql               # File SQL Database
 ```
+
+---
+
+## Flow / Alur Program
+### 1. Routing (index.php)
+- Menerima request dari user.
+- Menentukan halaman mana yang diminta (?page=pembalap atau ?page=kendaraan).
+- Menginisialisasi Model, View, dan Presenter yang sesuai.
+
+### 2. Presenter
+- Bertindak sebagai "Manajer".
+- Menerima perintah dari index.php (misal: tombol 'Simpan' ditekan).
+- Meminta Model untuk mengolah data (Simpan ke DB).
+- Meminta View untuk menampilkan hasil (Tampilkan Tabel/Form).
+
+### 3. Model
+- Fokus hanya pada data.
+- Melakukan koneksi ke database menggunakan DB.php.
+- Menjalankan query SQL (INSERT, SELECT, UPDATE, DELETE).
+
+Wajib mematuhi KontrakModel.
+
+### 4. View
+- Fokus hanya pada tampilan.
+- Menerima data dari Presenter.
+- Memuat file HTML dari folder template/.
+
+Melakukan manipulasi string (str_replace) untuk mengganti judul, header tabel, dan isi data sesuai konteks (Pembalap/Kendaraan).
+---
+
+## 💻 Cara Menjalankan
+1. Buat database baru di phpMyAdmin bernama mvp_db.
+2. Import file mvp_db.sql yang disertakan dalam repositori ini.
+3. Konfigurasi koneksi database di file models/DB.php (jika password/username berbeda).
+4. Jalankan aplikasi di browser:
+  ```Bash
+  http://localhost/TP9/index.php
+  ```
+5. Gunakan menu navigasi untuk berpindah antara Data Pembalap dan Data Kendaraan.
+
+---
+
+## 🎥 Dokumentasi
+https://github.com/user-attachments/assets/07c8051b-0ed9-4dd0-9253-7f20cbd06a1d
